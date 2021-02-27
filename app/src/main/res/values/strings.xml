@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Home -->
+    <string name="home">Home</string>
+    <string name="temp_unit">%.1f\u00B0<![CDATA[<small>C<small>]]></string>
+    <string name="humidity_unit">%1d<![CDATA[<small>%%<small>]]></string>
+    <string name="wind_unit">%.1f<![CDATA[<small>m/s<small>]]></string>
+    <string name="concat_using_comma">%s, %s</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="search_city">Search City</string>
+    <string name="empty_text">Search Your City to get Weather Details</string>
+
+
+    <!-- Common -->
+    <string name="no_internet">No Internet Connection</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="empty_string"/>
+
+
+    <!-- Errors -->
+    <string name="some_error_occurred">Some Error Occurred&#8230;</string>
+    <string name="network_error">Network Error</string>
+
+</resources>

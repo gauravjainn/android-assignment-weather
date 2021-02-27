@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#B21076</color>
+    <color name="colorPrimaryVariant">#B21076</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <color name="colorSecondary">#60214B</color>
+    <color name="colorSecondaryVariant">#60214B</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+
+    <color name="colorOnSurface">#3B3B3B</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_light">#EEEEEE</color>
+
+    <color name="primary_background">#FFFFFF</color>
+    <color name="primary_text_color">#3B3B3B</color>
+    <color name="hint_color">#8F8F8F</color>
+    <color name="button">#B21076</color>
+    <color name="error">#FF0000</color>
+
+
+</resources>

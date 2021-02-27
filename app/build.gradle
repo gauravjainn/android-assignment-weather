@@ -1,0 +1,171 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    int verCodeMain = 1
+    String verNameMain = 1.0
+
+    defaultConfig {
+        applicationId "com.app.weatherapp"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode verCodeMain
+        versionName verNameMain
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    flavorDimensions "flavor"
+    productFlavors {
+
+
+        production {
+
+            versionCode verCodeMain
+            versionName verNameMain
+
+            applicationId "com.app.weatherapp"
+            resValue "string", "app_name", "Weather App"
+
+            buildConfigField 'String', 'BASE_URL', '"http://api.openweathermap.org/"'
+            buildConfigField 'String', 'SUB_URL', '"data/2.5/"'
+            buildConfigField 'String', 'ICON_URL', '"http://openweathermap.org/img/wn/"'
+            buildConfigField 'String', 'MEDIA_SERVER_URL', '""'
+            buildConfigField 'String', 'API_KEY', '"46b25613e852403a28411598ba3181a7"'
+
+
+        }
+
+        development {
+
+            versionCode verCodeMain
+            versionName verNameMain
+
+            applicationId "com.app.weatherapp"
+            resValue "string", "app_name", "Dev-Weather App"
+
+            buildConfigField 'String', 'BASE_URL', '"http://api.openweathermap.org/"'
+            buildConfigField 'String', 'SUB_URL', '"data/2.5/"'
+            buildConfigField 'String', 'ICON_URL', '"http://openweathermap.org/img/wn/"'
+            buildConfigField 'String', 'MEDIA_SERVER_URL', '""'
+            buildConfigField 'String', 'API_KEY', '"46b25613e852403a28411598ba3181a7"'
+
+
+        }
+
+
+        android.applicationVariants.all { variant ->
+
+            variant.outputs.all {
+
+                def buildTypeName = variant.buildType.name
+
+                if (buildTypeName == "release") {
+                    buildTypeName = "PROD"
+                } else {
+                    buildTypeName = "DEV"
+                }
+                outputFileName = "Weather App-${buildTypeName}_${variant.versionName}.apk"
+
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$version_kotlin"
+    implementation "androidx.core:core-ktx:$version_core"
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    testImplementation "junit:junit:$version_junit"
+    androidTestImplementation "androidx.test:runner:$version_test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_test_espresso_core"
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    //Material
+    implementation "com.google.android.material:material:$version_material"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+    // Use viewModelScope from lifecycle-viewmodel-ktx
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_viewmodel"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation_fragment"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation_ui"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi_kotlin"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$version_moshi_kotlin_codegen"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit_converter_moshi"
+
+    // OkHttp
+    implementation platform("com.squareup.okhttp3:okhttp-bom:4.4.1")
+    implementation 'com.squareup.okhttp3:okhttp'
+    implementation 'com.squareup.okhttp3:logging-interceptor'
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+
+    // Retrofit Coroutines Support
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+
+    // Room UI
+    implementation "androidx.room:room-ktx:$version_room"
+    kapt("androidx.room:room-compiler:${version_room}")
+
+
+    // MultiDex
+    implementation "androidx.multidex:multidex:$version_multidex"
+
+    // Loading Indicator
+    implementation "com.wang.avi:library:$version_avi_loading_indicator"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+
+}
